@@ -29,6 +29,7 @@ import stafi from './stafi';
 import subsocial from './subsocial';
 import uniarts from './uniarts';
 import zero from './zero';
+import automata from './automata';
 
 // mapping from specName in state.getRuntimeVersion
 export default {
@@ -61,5 +62,6 @@ export default {
   stafi,
   subsocial,
   subzero: zero,
+  automata: automata,
   uniarts: uniarts
 };

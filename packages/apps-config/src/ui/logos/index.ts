@@ -52,6 +52,7 @@ import nodeSubsocial from './nodes/subsocial.svg';
 import nodeSubstrate from './nodes/substrate-hexagon.svg';
 import nodeUniarts from './nodes/uniarts.png';
 import nodeZero from './nodes/zero.svg';
+import nodeAutomata from './nodes/automata.png';
 // last-resort fallback, just something empty
 import emptyLogo from './empty.svg';
 
@@ -123,6 +124,7 @@ export const nodeLogos: Record<string, unknown> = [
   ['Equilibrium Node', nodeEquilibrium],
   ['Equilibrium', nodeEquilibrium],
   ['SUBZΞRO', nodeZero],
+  ['Automata', nodeAutomata],
   ['Uniarts', nodeUniarts]
 ].reduce((logos, [node, logo]): Record<string, unknown> => ({
   ...logos,
@@ -181,7 +183,8 @@ export const namedLogos: Record<string, unknown> = {
   substrate: nodeSubstrate,
   uniarts: nodeUniarts,
   westend: nodePolkadot,
-  zero: nodeZero
+  zero: nodeZero,
+  automata: nodeAutomata
 };
 
 // extension logos
