@@ -32,7 +32,7 @@ const chainWestend = '#da68a7';
 const chainGalois = '#000000';
 const chainZero = '#000000';
 const chainJupiter = '#7143ff';
-const chainAutomata = '#cc1100';
+const chainAutomata = '#ffd661';
 const chainUniarts = '#b39ef7';
 
 // based on node name
@@ -53,7 +53,7 @@ const nodeSora = '#2D2926';
 const nodeStafi = '#00F3AB';
 const nodeSubsocial = '#b9018c';
 const nodeZero = '#0099cc';
-const nodeAutomata = '#cc1100';
+const nodeAutomata = '#ffd661';
 
 export { emptyColor };
 

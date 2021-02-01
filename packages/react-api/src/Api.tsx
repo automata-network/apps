@@ -225,18 +225,237 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
           "InWork"
         ]
       },
-      "OrderPair": {
-        "first": "Vec<u8>",
-        "second": "Vec<u8>"
-      },
+      "DealId": "AccountId",
+      "OrderId": "AccountId",
+      "AmountType": "u128",
+      "PriceType": "u128",
       "OrderType": {
         "_enum": [
           "Buy",
           "Sell"
         ]
       },
-      "DealId": "AccountId",
-      "OrderId": "AccountId"
+      "CancelOrMatch": {
+        "_enum": [
+          "Match",
+          "Cancel"
+        ]
+      },
+      "OrderPair": {
+        "first": "Vec<u8>",
+        "second": "Vec<u8>"
+      },
+      "OrderStatus": {
+        "_enum": [
+          "Valid",
+          "Canceled",
+          "Finished"
+        ]
+      },
+      "Bid": {
+        "nodeid": "u128",
+        "price": "PriceType",
+        "sum": "AmountType",
+        "list": "Vec<u128>"
+      },
+      "ActionRecord": {
+        "action": "u64",
+        "proof": "Vec<u8>",
+        "header_hash": "H256"
+      },
+      "BestHeaderT": {
+        "number": "u64",
+        "hash": "H256"
+      },
+      "BidDetailT": {
+        "id": "u128",
+        "pair": "OrderPair",
+        "order_type": "OrderType",
+        "user": "AccountId",
+        "price": "PriceType",
+        "amount": "AmountType",
+        "time": "BlockNumber"
+      },
+      "OrderInfo": {
+        "who": "AccountId",
+        "order_type": "OrderType",
+        "pair": "OrderPair",
+        "amount": "AmountType",
+        "price": "PriceType",
+        "left": "PriceType",
+        "status": "OrderStatus",
+        "index": "u128",
+        "time": "BlockNumber",
+        "fill_index": "Vec<u128>"
+      },
+      "TokenDetail": {
+        "uid": "u64",
+        "name": "Vec<u8>",
+        "address": "Vec<u8>",
+        "chain": "Vec<u8>",
+        "precision": "u64",
+        "extra": "Vec<u8>",
+        "identity": "Vec<u8>"
+      },
+      "Node": {
+        "prev": "Option<u128>",
+        "next": "Option<u128>",
+        "data": "Bid"
+      },
+      "MultiNodeIndex": {
+        "index": "u128",
+        "multi_key": "(OrderPair, OrderType)"
+      },
+      "WithdrawDetail": {
+        "uid": "u64",
+        "actor": "AccountId",
+        "token": "Vec<u8>",
+        "value": "AmountType",
+        "receiver": "Vec<u8>"
+      },
+      "DepositDetail": {
+        "uid": "Vec<u8>",
+        "actor": "Vec<u8>",
+        "token": "Vec<u8>",
+        "value": "AmountType",
+        "receiver": "AccountId",
+        "chain": "Vec<u8>"
+      },
+      "AuthorInfo": {
+        "previous": "(Vec<H160>, u32)",
+        "current": "(Vec<H160>, u32)",
+        "uid": "u64"
+      },
+      "BlockHeaderu32": {
+        "version": "u32",
+        "previous_header_hash": "H256",
+        "merkle_root_hash": "H256",
+        "time": "u32",
+        "bits": "u32",
+        "nonce": "u32"
+      },
+      "DepthInfo": {
+        "buy": "Vec<DepthItem>",
+        "sell": "Vec<DepthItem>"
+      },
+      "DepthItem": {
+        "price": "u64",
+        "total": "u64"
+      },
+      "VerifiableProof": {
+        "key": "Bytes",
+        "value": "Bytes",
+        "proofs": "Vec<Bytes>"
+      },
+      "TransportRelayTx": {
+        "block_hash": "H256",
+        "raw": "Transaction",
+        "merkle_proof": "PartialMerkleTreeForTransport",
+        "previous_raw": "Transaction"
+      },
+      "Transaction": {
+        "version": "i32",
+        "inputs": "Vec<TransactionInput>",
+        "outputs": "Vec<TransactionOutput>",
+        "lock_time": "u32"
+      },
+      "TransactionInput": {
+        "previous_output": "OutPoint",
+        "script_sig": "Bytes",
+        "sequence": "u32",
+        "script_witness": "Vec<Bytes>"
+      },
+      "OutPoint": {
+        "hash": "H256",
+        "index": "u32"
+      },
+      "TransactionOutput": {
+        "value": "u64",
+        "script_pubkey": "Bytes"
+      },
+      "PartialMerkleTreeForTransport": {
+        "tx_count": "u32",
+        "hashes": "Vec<H256>",
+        "flags": "Vec<u8>"
+      },
+      "CandidateTx": {
+        "tx": "Transaction",
+        "unexpect": "bool",
+        "confirmed": "bool",
+        "block_hash": "H256",
+        "outs": "Vec<(AccountId, u32)>",
+        "outputs": "Vec<SeOutput>",
+        "proposers": "Vec<AccountId>"
+      },
+      "SeOutput": {
+        "hash": "H160",
+        "val": "u32"
+      },
+      "BlockHeader": {
+        "version": "u32",
+        "previous_header_hash": "H256",
+        "merkle_root_hash": "H256",
+        "time": "u32",
+        "bits": "Compact<u32>",
+        "nonce": "u32"
+      },
+      "BestHeader": {
+        "number": "u32",
+        "hash": "H256"
+      },
+      "PawnType": {
+        "rate": "Balance",
+        "cr": "Balance",
+        "nd": "Balance",
+        "penalty": "Balance",
+        "ceiling": "Balance",
+        "floor": "Balance"
+      },
+      "Cdp": {
+        "pawn": "Balance",
+        "nd": "Balance",
+        "edit_time": "Time",
+        "cliff": "Balance",
+        "rate": "Balance"
+      },
+      "Bids": {
+        "bid": "Balance",
+        "lot": "Balance",
+        "guy": "AccountId",
+        "tic": "Time",
+        "end": "Time",
+        "usr": "AccountId",
+        "td": "Balance",
+        "start": "Time",
+        "cdp": "u64"
+      },
+      "Feed": {
+        "price": "Balance",
+        "has": "bool"
+      },
+      "Time": "Moment",
+      "PerMill": "u32",
+      "RegionT": {
+        "id": "u64",
+        "name": "Vec<u8>",
+        "admin": "AccountId",
+        "treasure": "AccountId",
+        "taker_rate": "PerMill",
+        "maker_rate": "PerMill",
+        "pairs": "Vec<OrderPair>"
+      },
+      "BtcAddress": {
+        "kind": "Type",
+        "network": "Network",
+        "hash": "AddressHash"
+      },
+      "Network": {
+        "_enum": [
+          "Testnet",
+          "Mainnet"
+        ]
+      },
+      "AddressHash": "H160"
     };
 
     api = new ApiPromise({ provider, registry, signer, types, typesBundle, typesChain, typesSpec });
