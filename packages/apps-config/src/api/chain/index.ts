@@ -3,9 +3,11 @@
 
 import Galois from './galois';
 import Phala from './phala';
+import Automata from './automata';
 
 // alphabetical, based on the actual displayed name
 export default {
   Galois: Galois,
-  'Phala PoC-3': Phala
+  'Phala PoC-3': Phala,
+  Automata:Automata
 };

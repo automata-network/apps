@@ -41,13 +41,17 @@ function getApiUrl (): string {
 
   const stored = store.get('settings') as Record<string, unknown> || {};
   const fallbackUrl = endpoints.find(({ value }) => !!value);
-
+  //set automata default rpcUrl 
+  const customUrl = "ws://8.210.23.214:9944";
   // via settings, or the default chain
-  return [stored.apiUrl, process.env.WS_URL].includes(settings.apiUrl)
-    ? settings.apiUrl // keep as-is
-    : fallbackUrl
-      ? fallbackUrl.value as string // grab the fallback
-      : 'ws://127.0.0.1:9944'; // nothing found, go local
+  console.log("default url")
+  console.log(customUrl)
+  return customUrl
+  // return [stored.apiUrl, process.env.WS_URL].includes(settings.apiUrl)
+  //   ? settings.apiUrl // keep as-is
+  //   : fallbackUrl
+  //     ? fallbackUrl.value as string // grab the fallback
+  //     : 'ws://127.0.0.1:9944'; // nothing found, go local
 }
 
 const apiUrl = getApiUrl();

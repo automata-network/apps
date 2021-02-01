@@ -26,6 +26,8 @@ import { defaults as addressDefaults } from '@polkadot/util-crypto/address/defau
 import ApiContext from './ApiContext';
 import registry from './typeRegistry';
 import { decodeUrlTypes } from './urlTypes';
+import { useApi } from '@polkadot/react-hooks';
+
 
 interface Props {
   children: React.ReactNode;
@@ -199,9 +201,48 @@ function Api ({ children, store, url }: Props): React.ReactElement<Props> | null
     const provider = new WsProvider(url);
     const signer = new ApiSigner(registry, queuePayload, queueSetTxStatus);
     const types = getDevTypes();
-
+    const customJson = {
+      "GeodeOf": {
+        "owner": "AccountId",
+        "user": "Option<AccountId>",
+        "provider": "Option<AccountId>",
+        "ip": "Vec<u8>",
+        "dns": "Vec<u8>",
+        "props": "Option<GeodeProperties>",
+        "binary": "Option<Hash>",
+        "attestors": "Vec<AccountId>",
+        "state": "GeodeState"
+      },
+      "GeodeProperties": "Vec<GeodeProperty>",
+      "GeodeProperty": {
+        "name": "Vec<u8>",
+        "value": "Vec<u8>"
+      },
+      "GeodeState": {
+        "_enum": [
+          "Registered",
+          "Attested",
+          "InOrder",
+          "InWork"
+        ]
+      },
+      "OrderPair": {
+        "first": "Vec<u8>",
+        "second": "Vec<u8>"
+      },
+      "OrderType": {
+        "_enum": [
+          "Buy",
+          "Sell"
+        ]
+      },
+      "DealId": "AccountId",
+      "OrderId": "AccountId"
+    };
+  
     api = new ApiPromise({ provider, registry, signer, types, typesBundle, typesChain, typesSpec });
-
+    api.registerTypes(customJson);
+   
     api.on('connected', () => setIsApiConnected(true));
     api.on('disconnected', () => setIsApiConnected(false));
     api.on('error', (error: Error) => setApiError(error.message));
