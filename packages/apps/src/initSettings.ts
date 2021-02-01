@@ -2,14 +2,13 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import queryString from 'query-string';
-import store from 'store';
 
 import { createWsEndpoints } from '@polkadot/apps-config';
 import { extractIpfsDetails } from '@polkadot/react-hooks/useIpfs';
 import { settings } from '@polkadot/ui-settings';
 import { assert } from '@polkadot/util';
 
-function getApiUrl (): string {
+function getApiUrl(): string {
   // we split here so that both these forms are allowed
   //  - http://localhost:3000/?rpc=wss://substrate-rpc.parity.io/#/explorer
   //  - http://localhost:3000/#/explorer?rpc=wss://substrate-rpc.parity.io
@@ -39,19 +38,12 @@ function getApiUrl (): string {
     }
   }
 
-  const stored = store.get('settings') as Record<string, unknown> || {};
-  const fallbackUrl = endpoints.find(({ value }) => !!value);
-  //set automata default rpcUrl 
+  //set automata default rpcUrl
   const customUrl = "ws://8.210.23.214:9944";
   // via settings, or the default chain
   console.log("default url")
   console.log(customUrl)
   return customUrl
-  // return [stored.apiUrl, process.env.WS_URL].includes(settings.apiUrl)
-  //   ? settings.apiUrl // keep as-is
-  //   : fallbackUrl
-  //     ? fallbackUrl.value as string // grab the fallback
-  //     : 'ws://127.0.0.1:9944'; // nothing found, go local
 }
 
 const apiUrl = getApiUrl();

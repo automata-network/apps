@@ -62,6 +62,6 @@ export default {
   stafi,
   subsocial,
   subzero: zero,
-  // "Automata": automata,
+  automata: automata,
   uniarts: uniarts
 };

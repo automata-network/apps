@@ -26,7 +26,6 @@ import { defaults as addressDefaults } from '@polkadot/util-crypto/address/defau
 import ApiContext from './ApiContext';
 import registry from './typeRegistry';
 import { decodeUrlTypes } from './urlTypes';
-import { useApi } from '@polkadot/react-hooks';
 
 
 interface Props {
@@ -60,7 +59,7 @@ let api: ApiPromise;
 
 export { api };
 
-function isKeyringLoaded () {
+function isKeyringLoaded() {
   try {
     return !!keyring.keyring;
   } catch {
@@ -68,7 +67,7 @@ function isKeyringLoaded () {
   }
 }
 
-function getDevTypes (): Record<string, Record<string, string>> {
+function getDevTypes(): Record<string, Record<string, string>> {
   const types = decodeUrlTypes() || store.get('types', {}) as Record<string, Record<string, string>>;
   const names = Object.keys(types);
 
@@ -77,7 +76,7 @@ function getDevTypes (): Record<string, Record<string, string>> {
   return types;
 }
 
-async function getInjectedAccounts (injectedPromise: Promise<InjectedExtension[]>): Promise<InjectedAccountExt[]> {
+async function getInjectedAccounts(injectedPromise: Promise<InjectedExtension[]>): Promise<InjectedAccountExt[]> {
   try {
     await injectedPromise;
 
@@ -98,7 +97,7 @@ async function getInjectedAccounts (injectedPromise: Promise<InjectedExtension[]
   }
 }
 
-async function retrieve (api: ApiPromise, injectedPromise: Promise<InjectedExtension[]>): Promise<ChainData> {
+async function retrieve(api: ApiPromise, injectedPromise: Promise<InjectedExtension[]>): Promise<ChainData> {
   const [chainProperties, systemChain, systemChainType, systemName, systemVersion, injectedAccounts] = await Promise.all([
     api.rpc.system.properties(),
     api.rpc.system.chain(),
@@ -128,7 +127,7 @@ async function retrieve (api: ApiPromise, injectedPromise: Promise<InjectedExten
   };
 }
 
-async function loadOnReady (api: ApiPromise, injectedPromise: Promise<InjectedExtension[]>, store: KeyringStore | undefined, types: Record<string, Record<string, string>>): Promise<ApiState> {
+async function loadOnReady(api: ApiPromise, injectedPromise: Promise<InjectedExtension[]>, store: KeyringStore | undefined, types: Record<string, Record<string, string>>): Promise<ApiState> {
   registry.register(types);
   const { injectedAccounts, properties, systemChain, systemChainType, systemName, systemVersion } = await retrieve(api, injectedPromise);
   const ss58Format = settings.prefix === -1
@@ -183,7 +182,7 @@ async function loadOnReady (api: ApiPromise, injectedPromise: Promise<InjectedEx
   };
 }
 
-function Api ({ children, store, url }: Props): React.ReactElement<Props> | null {
+function Api({ children, store, url }: Props): React.ReactElement<Props> | null {
   const { queuePayload, queueSetTxStatus } = useContext(StatusContext);
   const [state, setState] = useState<ApiState>({ hasInjectedAccounts: false, isApiReady: false } as unknown as ApiState);
   const [isApiConnected, setIsApiConnected] = useState(false);
@@ -239,10 +238,10 @@ function Api ({ children, store, url }: Props): React.ReactElement<Props> | null
       "DealId": "AccountId",
       "OrderId": "AccountId"
     };
-  
+
     api = new ApiPromise({ provider, registry, signer, types, typesBundle, typesChain, typesSpec });
     api.registerTypes(customJson);
-   
+
     api.on('connected', () => setIsApiConnected(true));
     api.on('disconnected', () => setIsApiConnected(false));
     api.on('error', (error: Error) => setApiError(error.message));
@@ -263,7 +262,7 @@ function Api ({ children, store, url }: Props): React.ReactElement<Props> | null
     });
 
     setIsApiInitialized(true);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!value.isApiInitialized) {
