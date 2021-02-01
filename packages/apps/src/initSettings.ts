@@ -38,10 +38,9 @@ function getApiUrl(): string {
     }
   }
 
-  //set automata default rpcUrl
-  const customUrl = "ws://8.210.23.214:9944";
+  // TODO Fix it, set automata default rpcUrl
+  const customUrl = "wss://api.automatanetwork.com";
   // via settings, or the default chain
-  console.log("default url")
   console.log(customUrl)
   return customUrl
 }
