@@ -21,7 +21,7 @@ export function createTesting(t: TFunction): LinkOption[] {
       info: 'automata',
       text: t('rpc.automata', 'Automata', { ns: 'apps-config' }),
       providers: {
-        Centrifuge: 'wss://api.automatanetwork.com'
+        Automata: 'wss://api.automatanetwork.com'
       }
     },
     // polkadot test relays
