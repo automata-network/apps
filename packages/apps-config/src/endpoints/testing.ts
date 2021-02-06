@@ -49,6 +49,13 @@ export function createTesting(t: TFunction): LinkOption[] {
       }
     },
     {
+      info: 'bitcountry',
+      text: t('rpc.bitcountry', 'Bit.Country Tewai', { ns: 'apps-config' }),
+      providers: {
+        'Bit.Country': 'wss://whenua.bit.country'
+      }
+    },
+    {
       info: 'bifrost',
       text: t('rpc.bifrost', 'Bifrost Asgard', { ns: 'apps-config' }),
       providers: {
@@ -63,8 +70,15 @@ export function createTesting(t: TFunction): LinkOption[] {
       }
     },
     {
+      info: 'clover',
+      text: t('rpc.clover.finance', 'Clover', { ns: 'apps-config' }),
+      providers: {
+        Clover: 'wss://api.clover.finance/'
+      }
+    },
+    {
       info: 'crust',
-      text: t('rpc.crust.network', 'Crust Maxwell CC2', { ns: 'apps-config' }),
+      text: t('rpc.crust.network', 'Crust Maxwell', { ns: 'apps-config' }),
       providers: {
         'Crust Network': 'wss://api.crust.network/'
       }
@@ -144,7 +158,8 @@ export function createTesting(t: TFunction): LinkOption[] {
       info: 'acala',
       text: t('rpc.mandala', 'Mandala', { ns: 'apps-config' }),
       providers: {
-        Acala: 'wss://node-6714447553211260928.rz.onfinality.io/ws'
+        Acala: 'wss://node-6714447553211260928.rz.onfinality.io/ws',
+        'Patract Elara': 'wss://mandala.elara.patract.io'
       }
     },
     {
@@ -194,6 +209,13 @@ export function createTesting(t: TFunction): LinkOption[] {
       text: t('rpc.sora-substrate', 'SORA-staging', { ns: 'apps-config' }),
       providers: {
         Soramitsu: 'wss://ws.stage.sora2.soramitsu.co.jp'
+      }
+    },
+    {
+      info: 'ternoa-chaos',
+      text: t('rpc.ternoa-chaos', 'Ternoa Chaos', { ns: 'apps-config' }),
+      providers: {
+        CapsuleCorp: 'wss://chaos.ternoa.com'
       }
     },
     {

@@ -10,7 +10,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import { useApi } from '@polkadot/react-hooks';
-import { BN_TEN, BN_ZERO, formatBalance, isBn } from '@polkadot/util';
+import { BN_ONE, BN_TEN, BN_TWO, BN_ZERO, formatBalance, isBn } from '@polkadot/util';
 
 import { BitLengthOption } from './constants';
 import Dropdown from './Dropdown';
@@ -56,7 +56,7 @@ export class TokenUnit {
 }
 
 function getGlobalMaxValue (bitLength?: number): BN {
-  return new BN(2).pow(new BN(bitLength || DEFAULT_BITLENGTH)).subn(1);
+  return BN_TWO.pow(new BN(bitLength || DEFAULT_BITLENGTH)).isub(BN_ONE);
 }
 
 function getRegex (isDecimal: boolean): RegExp {
@@ -121,7 +121,7 @@ function inputToBn (api: ApiPromise, input: string, si: SiDef | null, bitLength:
     }
 
     const div = new BN(input.replace(/\.\d*$/, ''));
-    const modString = input.replace(/^\d+\./, '').substr(0, api.registry.chainDecimals);
+    const modString = input.replace(/^\d+\./, '').substr(0, api.registry.chainDecimals[0]);
     const mod = new BN(modString);
 
     result = div
