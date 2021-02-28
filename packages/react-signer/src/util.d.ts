@@ -1,0 +1,10 @@
+import type { KeyringPair } from '@polkadot/keyring/types';
+import type { QueueTx, QueueTxMessageSetStatus } from '@polkadot/react-components/Status/types';
+import type { AddressFlags } from './types';
+import { SubmittableResult } from '@polkadot/api';
+export declare const UNLOCK_MINS = 15;
+export declare function cacheUnlock(pair: KeyringPair): void;
+export declare function lockAccount(pair: KeyringPair): void;
+export declare function extractExternal(accountId: string | null): AddressFlags;
+export declare function recodeAddress(address: string | Uint8Array): string;
+export declare function handleTxResults(handler: 'send' | 'signAndSend', queueSetTxStatus: QueueTxMessageSetStatus, { id, txFailedCb, txSuccessCb, txUpdateCb }: QueueTx, unsubscribe: () => void): (result: SubmittableResult) => void;
