@@ -1,8 +1,8 @@
 {
   "lng.detect": "Default browser language (auto-detect)",
   "rpc.amber": "Amber",
-  "rpc.automata": "Automata",
   "rpc.ares": "Ares",
+  "rpc.automata": "Automata",
   "rpc.ava.summary": "user-run public nodes; see https://status.cloud.ava.do/",
   "rpc.beresheet": "Beresheet",
   "rpc.bifrost": "Bifrost Asgard",
