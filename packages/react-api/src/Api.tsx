@@ -200,15 +200,14 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
     const types = getDevTypes();
     const customJson = {
       "GeodeOf": {
-        "owner": "AccountId",
-        "user": "Option<AccountId>",
-        "provider": "Option<AccountId>",
+        "id": "AccountId",
+        "provider": "AccountId",
+        "order": "Option<Hash>",
         "ip": "Vec<u8>",
         "dns": "Vec<u8>",
-        "props": "Option<GeodeProperties>",
-        "binary": "Option<Hash>",
-        "attestors": "Vec<AccountId>",
-        "state": "GeodeState"
+        "props": "BTreeMap<Vec<u8>, Vec<u8>>",
+        "state": "GeodeState",
+        "promise": "u32"
       },
       "GeodeProperties": "Vec<GeodeProperty>",
       "GeodeProperty": {
@@ -219,8 +218,9 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
         "_enum": [
           "Registered",
           "Attested",
-          "InOrder",
-          "InWork"
+          "Instantiated",
+          "Unknown",
+          "Offline"
         ]
       },
       "DealId": "AccountId",
