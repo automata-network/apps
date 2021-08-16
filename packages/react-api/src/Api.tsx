@@ -460,7 +460,7 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
     const rpc = {
       "transfer": {
         "transferToSubstrateAccount": {
-          description: "",
+          description: "Transfer from evm account to substrate account",
           params: [
             {
               name: "message",
@@ -474,7 +474,7 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
           type: "u64"
         },
         "transferNonce": {
-          "description": "",
+          description: "Get current transfer nonce",
           params: [
             {
               name: "evm_addr",
