@@ -456,7 +456,6 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
       "AddressHash": "H160"
     };
 
-
     //custom rpc methods
     const rpc = {
       transfer: {
