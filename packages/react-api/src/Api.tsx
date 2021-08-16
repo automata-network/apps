@@ -456,7 +456,38 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
       "AddressHash": "H160"
     };
 
-    api = new ApiPromise({ provider, registry, signer, types, typesBundle, typesChain, typesSpec });
+
+    //custom rpc methods
+    const rpc = {
+      transfer: {
+        transferToSubstrateAccount: {
+          description: "Transfer from evm account to substrate account",
+          params: [
+            {
+              name: "message",
+              type: "String"
+            },
+            {
+              name: "signature",
+              type: "String"
+            }
+          ],
+          type: "u64"
+        },
+        transferNonce: {
+          description: "Get current transfer nonce",
+          params: [
+            {
+              name: "evm_addr",
+              type: "String"
+            }
+          ],
+          type: "u32"
+        }
+      }
+    };
+
+    api = new ApiPromise({ provider, registry, signer, types, typesBundle, typesChain, typesSpec, rpc });
     api.registerTypes(customJson);
 
     api.on('connected', () => setIsApiConnected(true));
