@@ -458,8 +458,8 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
 
     //custom rpc methods
     const rpc = {
-      "transferModule": {
-        "transfer_to_substrate_account": {
+      "transfer": {
+        "transferToSubstrateAccount": {
           description: "",
           params: [
             {
@@ -473,7 +473,7 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
           ],
           type: "u64"
         },
-        "transfer_nonce": {
+        "transferNonce": {
           "description": "",
           params: [
             {
