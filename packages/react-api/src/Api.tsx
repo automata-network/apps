@@ -453,7 +453,16 @@ function Api({ children, store, url }: Props): React.ReactElement<Props> | null 
           "Mainnet"
         ]
       },
-      "AddressHash": "H160"
+      "AddressHash": "H160",
+      "ResourceId": "[u8; 32]",
+      "DepositNonce": "u64",
+      "ProposalVotes": {
+        "votes_for": "Vec<AccountId>",
+        "votes_against": "Vec<AccountId>",
+        "status": "enum"
+      },
+      "BridgeTokenId": "U256",
+      "BridgeChainId": "u8"
     };
 
     //custom rpc methods
